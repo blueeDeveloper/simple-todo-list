@@ -4,6 +4,7 @@ import FormComponent from "./components/FormComponent";
 import ToDoListComponent from "./components/ToDoListComponent";
 
 function App() {
+  // Initial setup for tasks
   const todos = [
     { task: "Bring Groceries", completed: false },
     { task: "Finish React app", completed: false },
@@ -11,10 +12,13 @@ function App() {
   ];
   const [value, setValue] = useState("");
   const [tasks, setTasks] = useState(todos);
+
+  //update entered user task in state
   const changeValue = (event) => {
     setValue(event.target.value);
   };
 
+  //add the task to todo
   const onSubmit = (event) => {
     event.preventDefault();
     let newTodo = tasks.slice();
@@ -23,6 +27,7 @@ function App() {
     setValue("");
   };
 
+  //update the todo (either completed or delete)
   const updateTasks = (type, index) => {
     let getTodo = tasks.slice();
     if (type === "completed") getTodo[index].completed = true;
